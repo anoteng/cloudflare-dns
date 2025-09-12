@@ -2,8 +2,8 @@
 
 A minimal Bash script to keep an **A** and **AAAA** record up-to-date on
 [Cloudflare](https://www.cloudflare.com/) using their v4 API.  
-The script automatically detects its own directory and loads a separate
-configuration file.
+The script loads its configuration from the file cloudflare-dns.conf in the same directory as the script.
+In its current iteration, the script is only useable for those who need a simple update of 1 record (A and AAAA) and who has a working IPv6 connection. Support for protocol selection and multiple records may come in the future.
 
 ---
 
@@ -14,8 +14,8 @@ configuration file.
 2. **Copy the example config** and edit it with your settings:
 
    ```bash
-   cp cloudflare-ddns.conf.example cloudflare-ddns.conf
-   nano cloudflare-ddns.conf
+   cp cloudflare-dns.conf.example cloudflare-dns.conf
+   vim cloudflare-dns.conf
    ```
 
    Set at least:
@@ -26,8 +26,8 @@ configuration file.
 3. **Make the script executable** and run it:
 
    ```bash
-   chmod +x cf-ddns.sh
-   ./cf-ddns.sh
+   chmod +x cloudflare-dns.sh
+   ./cloudflare-dns.sh
    ```
 
    The script will:
@@ -52,7 +52,7 @@ For extra security, choose **Include → Specific Zone** and select the zone you
 Run it periodically with cron, for example every 10 minutes:
 
 ```bash
-*/10 * * * * /path/to/cf-ddns.sh >/dev/null 2>&1
+*/10 * * * * /path/to/cloudflare-dns.sh >/dev/null 2>&1
 ```
 
 Or use a systemd timer if you prefer.
