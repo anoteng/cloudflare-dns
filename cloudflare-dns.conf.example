@@ -1,0 +1,15 @@
+# ---------------- Cloudflare DDNS config ----------------
+# Cloudflare API token with permissions Zone:DNS:Edit + Zone:Read
+CF_API_TOKEN="cf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Zone and host to update
+CF_ZONE_NAME="exampledomain.com"
+DNS_NAME="examplehost.exampledomain.com"
+
+# TTL: 1 = auto
+TTL=1
+
+# Set to true for «orange cloud» (proxy) or false for direct DNS
+PROXIED=true
+# ---------------------------------------------------------
+
