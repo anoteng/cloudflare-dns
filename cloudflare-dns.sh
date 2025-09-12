@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ==== Konfig via env ====
-: "${CF_API_TOKEN:=}"
-: "${CF_ZONE_NAME:=}"           	# Zone
-: "${DNS_NAME:=}"         		# FQDN to update
-: "${PROXIED:=true}"                    # true|false (orange cloud)
-: "${TTL:=1}"				# 1 = auto
+# ---- read config ----
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+CONFIG_FILE="${SCRIPT_DIR}/cloudflare-dns.conf"
+if [[ ! -f "$CONFIG_FILE" ]]; then
+    echo "Config file not found: $CONFIG_FILE" >&2
+    exit 1
+fi
+# shellcheck source=/dev/null
+source "$CONFIG_FILE"
 
 API="https://api.cloudflare.com/client/v4"
 
