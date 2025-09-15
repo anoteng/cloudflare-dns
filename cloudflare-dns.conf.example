@@ -1,6 +1,6 @@
 # ---------------- Cloudflare DDNS config ----------------
 # Cloudflare API token with permissions Zone:DNS:Edit + Zone:Read
-CF_API_TOKEN="cf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+CF_API_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Zone and host to update
 CF_ZONE_NAME="exampledomain.com"
